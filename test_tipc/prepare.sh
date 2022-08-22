@@ -129,24 +129,24 @@ elif [ ${model_name} == "autoint" ]; then
         cp -r ./models/rank/autoint/data/sample_data/train/* ./test_tipc/data/infer
         echo "demo data ready"
     elif [ ${MODE} = "whole_train_whole_infer" ];then
-        cd ./datasets/criteo
+        cd ./datasets/criteo_autoint
         bash run.sh
         cd ../..
-        cp -r ./datasets/criteo/slot_train_data_full/* ./test_tipc/data/train
-        cp -r ./datasets/criteo/slot_test_data_full/* ./test_tipc/data/infer
+        cp -r ./datasets/criteo_autoint/slot_train_data_full/* ./test_tipc/data/train
+        cp -r ./datasets/criteo_autoint/slot_test_data_full/* ./test_tipc/data/infer
         echo "whole data ready"
     elif [ ${MODE} = "whole_infer" ];then
-        cd ./datasets/criteo
+        cd ./datasets/criteo_autoint
         bash run.sh
         cd ../..
         cp -r ./models/rank/autoint/data/sample_data/train/* ./test_tipc/data/train
-        cp -r ./datasets/criteo/slot_test_data_full/* ./test_tipc/data/infer
+        cp -r ./datasets/criteo_autoint/slot_test_data_full/* ./test_tipc/data/infer
     elif [ ${MODE} = "lite_train_whole_infer" ];then
         cd ./datasets/criteo
         bash run.sh
         cd ../..
         cp -r ./models/rank/autoint/data/sample_data/train/* ./test_tipc/data/train
-        cp -r ./datasets/criteo/slot_test_data_full/* ./test_tipc/data/infer
+        cp -r ./datasets/criteo_autoint/slot_test_data_full/* ./test_tipc/data/infer
     fi
 
 elif [ ${model_name} == "ple" ]; then
