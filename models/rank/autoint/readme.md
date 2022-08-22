@@ -89,44 +89,44 @@ python -u ../../../tools/static_infer.py -m config.yaml
 
 AutoInt模型的组网本质是一个二分类任务，代码参考`model.py`。模型主要组成是嵌入层(Embedding Layer)，交互层(Interacting Layer),输出层(Output Layer)以及相应的分类任务的loss计算和auc计算。
 
-<img align="center" src="picture/1.jpg">
+![1](./picture/1.jpg)
 
 
 ### 嵌入层(Embedding Layer)
 AutoInt首先使用不同的嵌入层将输入的离散数据和连续数据分别映射到同一低维空间。
 
-<img align="center" src="picture/2.jpg">
+![2](./picture/2.jpg)
 
 用公式表示如下：  
 
-<img align="center" src="picture/3.jpg"><br />
+![3](./picture/3.jpg)<br />
 
-<img align="center" src="picture/4.jpg">
+![4](./picture/4.jpg)
 
 其中$\mathbf{x}_{i}$表示one-hot离散向量，$\mathbf{V}_{i}$是离散量对应的嵌入矩阵，$\mathbf{v}_{m}$将连续数据$x_{m}$映射到低维空间。
 
 ### 交互层(Interacting Layer)
-<img align="center" src="picture/5.jpg">
+![5](./picture/5.jpg)
 
 交互层是AutoInt的核心，它使用了*Multi-head Self-Attention*来构造特征间的高阶组合，具体结构如上图所示。
 对于每个从Embedding Layer取得的向量$\mathbf{e}_{m}$, 使用不同的注意力函数(Attention Head)$\Psi^{h}(\cdot,\cdot)$计算向量对$(\mathbf{e}_{m}, \mathbf{e}_{k})$间的相似度$\alpha^{h}_{\mathbf{m},\mathbf{k}}$。
 
-<img align="center" src="picture/6.jpg">
+![6](./picture/6.jpg)
 
 <br />
 
-<img align="center" src="picture/7.jpg">
+![7](./picture/7.jpg)
 
 最后把不同注意力函数的输出作拼接，然后使用了残差连接作为Interacting Layer的最终输出。
 
-<img align="center" src="picture/8.jpg">
+![8](./picture/8.jpg)
 
-<img align="center" src="picture/9.jpg">
+![9](./picture/9.jpg)
 
 ### 输出层(Output Layer)
 输出层把所有在Interacting Layer学到的向量连接其来，然后把它作为fc层的输入，在通过激活函数sigmoid给出预测的点击率。
 
-<img align="center" src="picture/10.jpg">
+![10](./picture/10.jpg)
 
 ### Loss及Auc计算
 - 为了得到每条样本分属于正负样本的概率，我们将预测结果和`1-predict`合并起来得到predict_2d，以便接下来计算auc。  
@@ -139,7 +139,7 @@ AutoInt首先使用不同的嵌入层将输入的离散数据和连续数据分�
 在全量数据下模型的指标如下：  
 | 模型 | auc | batch_size | epoch_num| Time of each epoch |
 | :------| :------ | :------ | :------| :------ | 
-| AutoInt | 0.78 | 1024 | 1 | 约2小时 |
+| AutoInt | 0.8070 | 1024 | 3 | 约5小时 |
 
 1. 确认您当前所在目录为PaddleRec/models/rank/autoint
 2. 进入paddlerec/datasets/criteo_autoint目录下，执行该脚本，会从国内源的服务器上下载我们预处理完成的criteo全量数据集，并解压到指定文件夹。
