@@ -1,0 +1,97 @@
+(tensorflow) D:\workspace\AutoInt>python -u train.py --data "Criteo" --blocks 3 --heads 2  --block_shape "[64, 64, 64]" --is_save "True" --save_path "./test_code/Criteo/b3h2_64x64x64/" --field_size 39  --run_times 1 --data_path "./Dataprocess/Criteo/" --epoch 3 --has_residual "True"  --has_wide "False" --batch_size 1024 --deep_layers=[400,400,400]
+{'blocks': 3, 'block_shape': [64, 64, 64], 'heads': 2, 'embedding_size': 16, 'dropout_keep_prob': [1, 1, 0.5], 'epoch': 3, 'batch_size': 1024, 'learning_rate': 0.001, 'learning_rate_wide': 0.001, 'optimizer_type': 'adam', 'l2_reg': 0.0, 'random_seed': 2018, 'save_path': './test_code/Criteo/b3h2_64x64x64/', 'field_size': 39, 'loss_type': 'logloss', 'verbose': 1, 'run_times': 1, 'is_save': True, 'greater_is_better': False, 'has_residual': True, 'has_wide': False, 'deep_layers': [400, 400, 400], 'batch_norm': 0, 'batch_norm_decay': 0.995, 'data': 'Criteo', 'data_path': './Dataprocess/Criteo/'}
+**************
+run time : 1
+WARNING:tensorflow:From C:\Users\kafaichan\anaconda3\envs\tensorflow\lib\site-packages\tensorflow\python\util\dispatch.py:1082: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+D:\workspace\AutoInt\model.py:64: UserWarning: `tf.layers.dense` is deprecated and will be removed in a future version. Please use `tf.keras.layers.Dense` instead.
+  Q = tf.layers.dense(queries, num_units, activation=tf.nn.relu)
+D:\workspace\AutoInt\model.py:65: UserWarning: `tf.layers.dense` is deprecated and will be removed in a future version. Please use `tf.keras.layers.Dense` instead.
+  K = tf.layers.dense(keys, num_units, activation=tf.nn.relu)
+D:\workspace\AutoInt\model.py:66: UserWarning: `tf.layers.dense` is deprecated and will be removed in a future version. Please use `tf.keras.layers.Dense` instead.
+  V = tf.layers.dense(values, num_units, activation=tf.nn.relu)
+D:\workspace\AutoInt\model.py:68: UserWarning: `tf.layers.dense` is deprecated and will be removed in a future version. Please use `tf.keras.layers.Dense` instead.
+  V_res = tf.layers.dense(values, num_units, activation=tf.nn.relu)
+D:\workspace\AutoInt\model.py:86: UserWarning: `tf.layers.dropout` is deprecated and will be removed in a future version. Please use `tf.keras.layers.Dropout` instead.
+  weights = tf.layers.dropout(weights, rate=1-dropout_keep_prob,
+2022-08-19 22:25:44.187005: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-08-19 22:25:46.253257: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1532] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 9628 MB memory:  -> device: 0, name: NVIDIA GeForce GTX 1080 Ti, pci bus id: 0000:01:00.0, compute capability: 6.1
+2022-08-19 22:25:46.298672: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:354] MLIR V1 optimization pass is not enabled
+total parameters :16595090
+extra parameters : 611714
+epoch 1, file 3
+[1-1] model saved!. Valid loss is improved from 1.0000 to 0.4600
+[1-1] train-result=0.8073, train-logloss=0.4446, valid-result=0.7894, valid-logloss=0.4600 [402.5 s]
+epoch 1, file 4
+[1-2] model saved!. Valid loss is improved from 0.4600 to 0.4574
+[1-2] train-result=0.8105, train-logloss=0.4440, valid-result=0.7946, valid-logloss=0.4574 [403.6 s]
+epoch 1, file 5
+[1-3] model saved!. Valid loss is improved from 0.4574 to 0.4531
+[1-3] train-result=0.8134, train-logloss=0.4399, valid-result=0.7979, valid-logloss=0.4531 [876.6 s]
+epoch 1, file 6
+[1-4] model saved!. Valid loss is improved from 0.4531 to 0.4511
+[1-4] train-result=0.8150, train-logloss=0.4383, valid-result=0.8002, valid-logloss=0.4511 [813.3 s]
+epoch 1, file 7
+[1-5] model saved!. Valid loss is improved from 0.4511 to 0.4497
+[1-5] train-result=0.8154, train-logloss=0.4372, valid-result=0.8014, valid-logloss=0.4497 [809.8 s]
+epoch 1, file 8
+WARNING:tensorflow:From C:\Users\kafaichan\anaconda3\envs\tensorflow\lib\site-packages\tensorflow\python\training\saver.py:1066: remove_checkpoint (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to delete files with this prefix.
+[1-6] model saved!. Valid loss is improved from 0.4497 to 0.4488
+[1-6] train-result=0.8162, train-logloss=0.4362, valid-result=0.8023, valid-logloss=0.4488 [808.6 s]
+epoch 1, file 9
+[1-7] model saved!. Valid loss is improved from 0.4488 to 0.4475
+[1-7] train-result=0.8169, train-logloss=0.4354, valid-result=0.8036, valid-logloss=0.4475 [811.5 s]
+epoch 1, file 10
+[1-8] model saved!. Valid loss is improved from 0.4475 to 0.4471
+[1-8] train-result=0.8169, train-logloss=0.4363, valid-result=0.8042, valid-logloss=0.4471 [810.6 s]
+epoch 1, time 5736
+epoch 2, file 3
+[2-1] train-result=0.8210, train-logloss=0.4321, valid-result=0.8041, valid-logloss=0.4475 [806.1 s]
+epoch 2, file 4
+[2-2] model saved!. Valid loss is improved from 0.4471 to 0.4468
+[2-2] train-result=0.8231, train-logloss=0.4295, valid-result=0.8046, valid-logloss=0.4468 [680.4 s]
+epoch 2, file 5
+[2-3] model saved!. Valid loss is improved from 0.4468 to 0.4462
+[2-3] train-result=0.8241, train-logloss=0.4285, valid-result=0.8051, valid-logloss=0.4462 [393.7 s]
+epoch 2, file 6
+[2-4] model saved!. Valid loss is improved from 0.4462 to 0.4461
+[2-4] train-result=0.8247, train-logloss=0.4282, valid-result=0.8051, valid-logloss=0.4461 [394.0 s]
+epoch 2, file 7
+[2-5] model saved!. Valid loss is improved from 0.4461 to 0.4459
+[2-5] train-result=0.8251, train-logloss=0.4276, valid-result=0.8054, valid-logloss=0.4459 [394.2 s]
+epoch 2, file 8
+[2-6] train-result=0.8255, train-logloss=0.4268, valid-result=0.8057, valid-logloss=0.4459 [391.1 s]
+epoch 2, file 9
+[2-7] model saved!. Valid loss is improved from 0.4459 to 0.4454
+[2-7] train-result=0.8256, train-logloss=0.4268, valid-result=0.8062, valid-logloss=0.4454 [393.5 s]
+epoch 2, file 10
+[2-8] train-result=0.8266, train-logloss=0.4269, valid-result=0.8064, valid-logloss=0.4457 [391.3 s]
+epoch 2, time 3844
+epoch 3, file 3
+[3-1] train-result=0.8299, train-logloss=0.4223, valid-result=0.8049, valid-logloss=0.4468 [390.9 s]
+epoch 3, file 4
+[3-2] train-result=0.8317, train-logloss=0.4217, valid-result=0.8048, valid-logloss=0.4464 [391.2 s]
+epoch 3, file 5
+[3-3] train-result=0.8329, train-logloss=0.4195, valid-result=0.8049, valid-logloss=0.4474 [390.9 s]
+epoch 3, file 6
+[3-4] train-result=0.8327, train-logloss=0.4196, valid-result=0.8053, valid-logloss=0.4464 [390.5 s]
+epoch 3, file 7
+[3-5] train-result=0.8338, train-logloss=0.4184, valid-result=0.8052, valid-logloss=0.4467 [391.1 s]
+epoch 3, file 8
+[3-6] train-result=0.8342, train-logloss=0.4181, valid-result=0.8056, valid-logloss=0.4464 [391.0 s]
+epoch 3, file 9
+[3-7] train-result=0.8339, train-logloss=0.4183, valid-result=0.8056, valid-logloss=0.4463 [391.2 s]
+epoch 3, file 10
+[3-8] train-result=0.8336, train-logloss=0.4194, valid-result=0.8057, valid-logloss=0.4468 [391.0 s]
+epoch 3, time 3127
+start testing!...
+restored from ./test_code/Criteo/b3h2_64x64x64/1/
+test-result = 0.8065, test-logloss = 0.4451
+test_auc [0.8065252927733216]
+test_log_loss [0.445123533043696]
+avg_auc 0.8065252927733216
+avg_log_loss 0.445123533043696
