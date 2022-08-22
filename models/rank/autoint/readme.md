@@ -89,44 +89,44 @@ python -u ../../../tools/static_infer.py -m config.yaml
 
 AutoInt模型的组网本质是一个二分类任务，代码参考`model.py`。模型主要组成是嵌入层(Embedding Layer)，交互层(Interacting Layer),输出层(Output Layer)以及相应的分类任务的loss计算和auc计算。
 
-![1](./picture/1.jpg)
+![1](picture/1.JPG)
 
 
 ### 嵌入层(Embedding Layer)
 AutoInt首先使用不同的嵌入层将输入的离散数据和连续数据分别映射到同一低维空间。
 
-![2](./picture/2.jpg)
+![2](picture/2.JPG)
 
 用公式表示如下：  
 
-![3](./picture/3.jpg)<br />
+![3](picture/3.JPG)<br />
 
-![4](./picture/4.jpg)
+![4](picture/4.JPG)
 
 其中$\mathbf{x}_{i}$表示one-hot离散向量，$\mathbf{V}_{i}$是离散量对应的嵌入矩阵，$\mathbf{v}_{m}$将连续数据$x_{m}$映射到低维空间。
 
 ### 交互层(Interacting Layer)
-![5](./picture/5.jpg)
+![5](picture/5.JPG)
 
 交互层是AutoInt的核心，它使用了*Multi-head Self-Attention*来构造特征间的高阶组合，具体结构如上图所示。
 对于每个从Embedding Layer取得的向量$\mathbf{e}_{m}$, 使用不同的注意力函数(Attention Head)$\Psi^{h}(\cdot,\cdot)$计算向量对$(\mathbf{e}_{m}, \mathbf{e}_{k})$间的相似度$\alpha^{h}_{\mathbf{m},\mathbf{k}}$。
 
-![6](./picture/6.jpg)
+![6](picture/6.JPG)
 
 <br />
 
-![7](./picture/7.jpg)
+![7](picture/7.JPG)
 
 最后把不同注意力函数的输出作拼接，然后使用了残差连接作为Interacting Layer的最终输出。
 
-![8](./picture/8.jpg)
+![8](picture/8.JPG)
 
-![9](./picture/9.jpg)
+![9](picture/9.JPG)
 
 ### 输出层(Output Layer)
 输出层把所有在Interacting Layer学到的向量连接其来，然后把它作为fc层的输入，在通过激活函数sigmoid给出预测的点击率。
 
-![10](./picture/10.jpg)
+![10](picture/10.JPG)
 
 ### Loss及Auc计算
 - 为了得到每条样本分属于正负样本的概率，我们将预测结果和`1-predict`合并起来得到predict_2d，以便接下来计算auc。  
